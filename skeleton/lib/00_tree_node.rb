@@ -30,19 +30,19 @@ class PolyTreeNode
   def remove_child(node)
     if exists(node)
       node.parent = nil
-      children.delete(node)
+      # children.delete(node)
     else
       raise_error
     end
   end
 
   def dfs(target_value)
-    return nil if children.empty? && self.value != target_value
     return self if self.value == target_value
+    return nil if children.empty?
 
     children.each do |child|
 
-       found = child.dfs(target_value)
+      found = child.dfs(target_value)
       return found if found
     end
 
